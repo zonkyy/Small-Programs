@@ -1,12 +1,17 @@
-MEMBER = 5
+MEMBER = 3
 
 class Player
   attr_accessor :cards
 
+  def initialize(dealed)    # コンストラクタ
+    @cards = dealed
+    check
+  end
+
   # 同じ数字のカードを捨てる
   def check
     cards.sort!
-    for i in 1..13
+    1.upto(13) do |i|
       while cards.index(i) != cards.rindex(i)
         cards.delete_at(cards.index i)
         cards.delete_at(cards.rindex i)
@@ -28,23 +33,16 @@ class Player
 end
 
 
-# プレイヤーオブジェクト作成
-players = []
-MEMBER.times do
-  players.push(Player.new)
-end
 
-# カードを配布(0はジョーカー)
+# 配布するカード生成(0はジョーカー)
 all_cards = Array.new(13*4){|i| i % 13 + 1}
 all_cards << 0
 all_cards = all_cards.sort_by{rand}
 
-players.each do |p|
-  p.cards = []
-end
-
+# カードを人数分に分割して、それを所持したプレイヤーオブジェクト作成
+players = []
 all_cards.each_slice(53/MEMBER + 1).to_a.each_with_index do |card, i|
-  players[i].cards = card.clone
+  players.push(Player.new(card.clone))
 end
 
 # ババ抜き開始
