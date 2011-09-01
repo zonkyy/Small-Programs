@@ -1,0 +1,16 @@
+src_dir:
+  - "d:/home"
+#  - "c:/eclipse"
+#  - "c:/tools"
+dest_host:
+#  - "y-onizuk@kir.ics.es.osaka-u.ac.jp"
+  - "y-onizuk@kir"
+dest_dir:
+  - "~/cache"
+exclude:
+  - "d:/home/.*"
+  - "d:/home/download"
+include:
+  - "d:/home/.emacs.d"
+  - "d:/home/.evernote-mode"
+  - "d:/home/.zsh.d"

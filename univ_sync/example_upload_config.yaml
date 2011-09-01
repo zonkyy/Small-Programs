@@ -1,0 +1,11 @@
+src_dir:
+  - "d:/home"
+dest_host:
+  - "user@host.ac.jp"
+dest_dir:
+  - "~/backup"
+exclude:
+  - "d:/home/.*"
+include:
+  - "d:/home/.emacs.d"
+  - "d:/home/.zsh.d"
