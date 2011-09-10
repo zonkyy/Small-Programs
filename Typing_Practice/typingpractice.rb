@@ -1,4 +1,4 @@
-SPACE_INTERVAL = 3
+SPACE_INTERVAL = 4
 
 class TypingPractice
   def initialize
@@ -11,10 +11,12 @@ class TypingPractice
     ch_ary = []
     num.to_i.times do |i|
       ch_ary << @hiragana[(i % (last_idx - first_idx + 1)) + first_idx]
-      ch_ary << " " if (i % SPACE_INTERVAL == (SPACE_INTERVAL - 1))
     end
 
-    print ch_ary
+    ch_ary.sort_by{rand}.each_with_index do |c, i|
+      print " " if i % SPACE_INTERVAL == 0
+      print c
+    end
     puts
   end
 end
