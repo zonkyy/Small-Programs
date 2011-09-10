@@ -53,6 +53,15 @@ class SudokuGenerator
       exit
     end
 
+    if @field[x][y] != 0
+      if y >= 8
+        reflexive(x+1, 0)
+      else
+        reflexive(x, y+1)
+      end
+      return
+    end
+
     insert_nums_ary = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort_by{rand}
 
     insert_nums_ary.each do |num|
@@ -98,4 +107,13 @@ end
 
 
 generator = SudokuGenerator.new
+generator.field = [[1,0,0,7,0,0,6,0,0],
+                   [0,2,0,0,0,0,0,5,0],
+                   [0,0,3,0,0,9,0,0,0],
+                   [7,0,0,4,0,0,0,0,8],
+                   [0,0,0,0,5,0,0,2,0],
+                   [0,0,0,0,0,6,1,0,0],
+                   [4,0,2,1,0,0,7,0,0],
+                   [0,0,0,0,0,7,0,8,0],
+                   [6,0,0,0,2,0,0,0,9]]
 generator.generate_ans_field
